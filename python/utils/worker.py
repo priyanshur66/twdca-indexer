@@ -26,6 +26,7 @@ from processors.nft_orderbooks.nft_marketplace_processor import NFTMarketplacePr
 from processors.nft_marketplace_v2.processor import NFTMarketplaceV2Processor
 from processors.coin_flip.processor import CoinFlipProcessor
 from processors.aptos_ambassador_token.processor import AptosAmbassadorTokenProcessor
+from processors.merkle_lt.processor import MerkleProcessor
 import asyncio
 import logging
 import queue
@@ -498,6 +499,8 @@ class IndexerProcessorServer:
                 self.processor = CoinFlipProcessor()
             case ProcessorName.EXAMPLE_AMBASSADOR_TOKEN_PROCESSOR.value:
                 self.processor = AptosAmbassadorTokenProcessor()
+            case ProcessorName.MERKLE_PROCESSOR.value:
+                self.processor = MerkleProcessor() 
             case _:
                 raise Exception(
                     "Invalid processor name"
